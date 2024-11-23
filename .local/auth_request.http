@@ -1,0 +1,7 @@
+GET http://localhost:9096/authorize?client_id=000000&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A9096%2Ftoken%3Fgrant_type%3Dclient_credentials%26client_id%3D000000%26client_secret%3D999999%26scope%3Dread
+
+###
+GET http://localhost:9096/token?client_id=000000&client_secret=999999&code=YJC1ODDIOTUTOTAYMS0ZMJG0LTHJZTQTYTM1MDY2OTMZMZK0&grant_type=client_credentials&scope=read
+
+###
+GET http://localhost:9096/test?access_token=NGUWZDU0NTMTMZFLMI0ZMDVLLWFMYZCTMZFKNMJKYJM4OTBL
