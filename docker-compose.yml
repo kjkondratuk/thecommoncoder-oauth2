@@ -4,10 +4,24 @@ services:
   postgres:
     image: postgres:14-alpine
     ports:
-      - 5432:5432
+      - "5432:5432"
     volumes:
-      - ~/apps/postgres:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
+    secrets:
+      - postgres_password
     environment:
-      - POSTGRES_PASSWORD=S3cret
-      - POSTGRES_USER=citizix_user
-      - POSTGRES_DB=citizix_db
+      - POSTGRES_PASSWORD_FILE=/run/secrets/postgres_password
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=oauth
+  oauth:
+    build: .
+    ports:
+      - "9096:9096"
+    depends_on:
+      - postgres
+secrets:
+  postgres_password:
+    file: .secrets/postgres
+volumes:
+  postgres_data:
+    driver: local
